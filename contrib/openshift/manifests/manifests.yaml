@@ -70,8 +70,8 @@ objects:
                   path: ${{HEALTH_PATH}}
                   port: ${{HEALTH_PORT}}
               volumeMounts:
-                name: clair-config
-                mountPath: /etc/clair
+                - name: clair-config
+                  mountPath: /etc/clair
   #
   # matcher deployment
   #
@@ -136,8 +136,8 @@ objects:
                   path: ${{HEALTH_PATH}}
                   port: ${{HEALTH_PORT}}
               volumeMounts:
-                name: clair-config
-                mountPath: /etc/clair
+                - name: clair-config
+                  mountPath: /etc/clair
   #
   # indexer service
   #
@@ -193,7 +193,7 @@ parameters:
   # indexer params
   #
   - name: INDEXER_DEPLOYMENT_REPLICAS
-    value: 4
+    value: "4"
     displayName: the number of indexers deployed
   - name: INDEXER_CPU_LIMITS
     value: "4"
@@ -211,7 +211,7 @@ parameters:
   # matcher params
   #
   - name: MATCHER_DEPLOYMENT_REPLICAS
-    value: 4
+    value: "4"
     displayName: the number of matchers deployed
   - name: MATCHER_CPU_LIMITS
     value: "4"
@@ -238,14 +238,14 @@ parameters:
     value: ""
     displayName: the image tag of clair v4 to deploy
   - name: HTTP_TRANSPORT_PORT
-    value: 8080
+    value: "8080"
     displayName: http port where clair's main functionality is provided
   - name: INTROSPECTION_PORT
-    value: 8089
+    value: "8089"
     displayName: http port where clair's health/metrics endpoints are provided
   - name: HEALTH_PATH
     value: "/healthz"
     displayName: the http path to clair's health check endpoint
   - name: HEALTH_PORT
-    value: 8089
+    value: "8089"
     displayName: the port to clair's health check endpoint
