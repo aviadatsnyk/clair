@@ -32,9 +32,9 @@ objects:
           volumes:
             - name: clair-config
               secret:
-                secretName: ${{CLAIR_CONFIG_SECRET}}
+                secretName: ${{CLAIR_SECRET}}
                 items:
-                  - key: clair_config
+                  - key: config
                     path: clair.conf
           containers:
             - name: clair-indexer
@@ -98,9 +98,9 @@ objects:
           volumes:
             - name: clair-config
               secret:
-                secretName: ${{CLAIR_CONFIG_SECRET}}
+                secretName: ${{CLAIR_SECRET}}
                 items:
-                  - key: clair_config
+                  - key: config
                     path: clair.conf
           containers:
             - name: clair-matcher
@@ -228,8 +228,8 @@ parameters:
   #
   # shared params
   #
-  - name: CLAIR_CONFIG_SECRET
-    value: clair-config
+  - name: CLAIR_SECRET
+    value: "clair"
     displayName: the vault secret containing clair's config
   - name: CLAIR_IMAGE
     value: ""
